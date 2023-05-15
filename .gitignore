@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+/.parcel-cache
+
+# misc
+info*
+
+you-are-very-curious-checking-the-gitignore-file
