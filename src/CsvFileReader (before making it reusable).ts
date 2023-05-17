@@ -1,8 +1,11 @@
+// The file is just for the data structure as in 'football.csv'
+// The other file is modified to be reusable
+
 import fs from 'fs';
 import { dateStringToDate } from './utils';
 import { MatchResult } from './MatchResult';
 
-// defining a tuple (type alias / type definition)
+// defining a tuple (type alias/definition)
 type CSVdata = [Date, string, string, number, number, MatchResult, string];
 
 export class CsvFileReader {

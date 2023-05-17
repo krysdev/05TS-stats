@@ -1,4 +1,4 @@
-// csv string '25/10/2018' to a Date object
+// converts a string from CSV '25/10/2018' to a Date object
 
 export const dateStringToDate = (dateString: string): Date => {
   const dateParts = dateString

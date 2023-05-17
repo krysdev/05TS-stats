@@ -1,17 +1,11 @@
 import { CsvFileReader } from './CsvFileReader';
+import { MatchResult } from './MatchResult';
 
 const fileReader = new CsvFileReader('football.csv');
 fileReader.read();
-const matches = fileReader.data
+const matches = fileReader.data;
 
-// TS enumeration - an object that stores closely related values (it's an info to other engineers)
-// There are no ':' and no first '=', but it's compiled to a normal object in JS
-// It serves as type declaration too (so same like for the normal objects)
-enum MatchResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
+const dateOfMatch = fileReader.data[0][0] // -> 'dateOfMatch' is properly recognized by TS as Date (taken from 'CSVdata' tuple)
 
 let manUnitedWins = 0;
 
