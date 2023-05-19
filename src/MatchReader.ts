@@ -5,7 +5,7 @@ import { dateStringToDate } from './utils';
 import { MatchResult } from './MatchResult';
 
 export class MatchReader extends CsvFileReader {
-  mapRow(row: string[]): MatchData {
+  mapRow(row: string[]): CSVdata {
     return [
       dateStringToDate(row[0]), // convert date as a string to a Date object
       row[1], // string
