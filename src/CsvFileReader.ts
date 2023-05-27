@@ -1,11 +1,9 @@
-import fs from 'fs';
-import { MatchResult } from './MatchResult';
+// ** refactoring of the code, version 1 **
 
-// defining a tuple (type alias / type definition)
-type CSVdata = [Date, string, string, number, number, MatchResult, string];
+import fs from 'fs';
 
 // <T> is a GENERICS (variable type)
-export abstract class CsvFileReader<T> {
+export abstract class CsvFileReader <T> {
   // data: string[][] = []; // initialize 2D array of strings (but not used anymore, just the below)
   data: T[] = []; // 'T' (TypeOfData) is already an array, so it is still a 2D array
 
