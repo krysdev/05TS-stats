@@ -1,8 +1,8 @@
 // this class is customized specificly to read 'football.csv'
 
 import { CsvFileReader } from './CsvFileReader';
-import { dateStringToDate } from './utils';
-import { MatchResult } from './MatchResult';
+import { dateStringToDate } from '../utils';
+import { MatchResult } from '../MatchResult';
 
 // defining a tuple (type alias / type definition)
 type CSVdata = [Date, string, string, number, number, MatchResult, string];
