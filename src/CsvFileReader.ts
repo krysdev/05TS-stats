@@ -1,16 +1,13 @@
-// ** refactoring of the code, version 1 **
+// ** refactoring of the code, version 2 **
+// MatchReader is a standalone class and it uses an interface 'DataReader' to satisfy the requirements
 
 import fs from 'fs';
 
-// <T> is a GENERICS (variable type)
-export abstract class CsvFileReader <T> {
-  // data: string[][] = []; // initialize 2D array of strings (but not used anymore, just the below)
-  data: T[] = []; // 'T' (TypeOfData) is already an array, so it is still a 2D array
+export class CsvFileReader {
+  data: string[][] = []; // type + initialize 2D array of strings
 
   // one line
   constructor(public filename: string) {}
-
-  abstract mapRow(row: string[]): T;
 
   read(): void {
     // CSV file row: 10/08/2018,Man United,Leicester,2,1,H,A Marriner
@@ -23,8 +20,6 @@ export abstract class CsvFileReader <T> {
       // and then an array of arrays [['a','b'],['x','y']]
       .map((row: string): string[] => {
         return row.split(',');
-      })
-      // convert strings to a proper data type
-      .map(this.mapRow);
+      });
   }
 }

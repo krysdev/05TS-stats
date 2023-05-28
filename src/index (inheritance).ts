@@ -1,15 +1,11 @@
 import { MatchReader } from './MatchReader';
 import { MatchResult } from './MatchResult';
-import { CsvFileReader } from './CsvFileReader';
 
-const fileReader = new CsvFileReader('football.csv');
-const matchReader = new MatchReader(fileReader);
-matchReader.load();
+const fileReader = new MatchReader('football.csv');
+fileReader.read();
+const matches = fileReader.data;
 
-const matches = matchReader.matches;
-
-// const dateOfMatch = fileReader.data[0][0] // -> 'dateOfMatch' is properly recognized by TS as Date (taken from 'CSVdata' tuple)
-// console.log(dateOfMatch) // -> 10/08/2018
+const dateOfMatch = fileReader.data[0][0] // -> 'dateOfMatch' is properly recognized by TS as Date (taken from 'CSVdata' tuple)
 
 let manUnitedWins = 0;
 

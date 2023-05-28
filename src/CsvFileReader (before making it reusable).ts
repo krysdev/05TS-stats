@@ -1,5 +1,4 @@
-// The file is just for the data structure as in 'football.csv'
-// The other file is modified to be reusable
+// The file is just for the data structure as in 'football.csv' and it can't be reused
 
 import fs from 'fs';
 import { dateStringToDate } from './utils';
