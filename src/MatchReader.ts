@@ -1,8 +1,6 @@
 import { dateStringToDate } from './utils';
 import { MatchResult } from './MatchResult';
-
-// defining a tuple (type alias/definition)
-type CSVdata = [Date, string, string, number, number, MatchResult, string];
+import { CSVdata } from './CSVdata';
 
 interface DataReader {
   read(): void;

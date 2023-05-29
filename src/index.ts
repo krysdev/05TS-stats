@@ -1,24 +1,24 @@
 import { MatchReader } from './MatchReader';
-import { MatchResult } from './MatchResult';
 import { CsvFileReader } from './CsvFileReader';
+import { ConsoleReport } from './reportTargets/ConsoleReport';
+import { WinsAnalysis } from './analyzers/WinsAnalysis';
+import { Summary } from './Summary';
+import { HtmlReport } from './reportTargets/HtmlReport';
 
+// Create an object that satisfies the 'DataReader' interface
 const fileReader = new CsvFileReader('football.csv');
+
+// Create an instance of MatchReader and pass in something satisfying the 'DataReader' interface
 const matchReader = new MatchReader(fileReader);
 matchReader.load();
 
-const matches = matchReader.matches;
+// 'Summary' class arguments need to satisfy the 'Analyzer' and 'OutputTarget' interfaces
+const summary = new Summary(
+  // pass in the name of the team
+  new WinsAnalysis('Man United'),
+  // new HtmlReport()
+  new ConsoleReport()
+);
 
-// const dateOfMatch = fileReader.data[0][0] // -> 'dateOfMatch' is properly recognized by TS as Date (taken from 'CSVdata' tuple)
-// console.log(dateOfMatch) // -> 10/08/2018
-
-let manUnitedWins = 0;
-
-for (let match of matches) {
-  if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
-    manUnitedWins++;
-  } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin) {
-    manUnitedWins++;
-  }
-}
-
-console.log(`Man United won ${manUnitedWins} games`); // -> Man United won 18 games
+// 'matchReader.matches' is the array of match data tuples
+summary.buildAndPrintReport(matchReader.matches); // -> Team Man United won 18 games
